@@ -1,6 +1,6 @@
 //Maya ASCII 2023 scene
 //Name: Main.ma
-//Last modified: Mon, May 08, 2023 07:34:17 PM
+//Last modified: Mon, May 08, 2023 07:37:35 PM
 //Codeset: 1252
 requires maya "2023";
 requires -nodeType "aiOptions" -nodeType "aiAOVDriver" -nodeType "aiAOVFilter" "mtoa" "5.2.1.1";
@@ -10,7 +10,7 @@ fileInfo "product" "Maya 2023";
 fileInfo "version" "2023";
 fileInfo "cutIdentifier" "202211021031-847a9f9623";
 fileInfo "osv" "Windows 11 Pro v2009 (Build: 22621)";
-fileInfo "UUID" "AA5948DB-4679-1F42-5EEF-A586569FE08B";
+fileInfo "UUID" "1744A8ED-4107-E8B4-A662-619023A36FEC";
 createNode transform -s -n "persp";
 	rename -uid "5DEA5394-4B45-6749-6437-29985E1C63A7";
 	setAttr ".v" no;
@@ -75,6 +75,14 @@ createNode camera -s -n "sideShape" -p "side";
 	setAttr ".hc" -type "string" "viewSet -s %camera";
 	setAttr ".o" yes;
 	setAttr ".ai_translator" -type "string" "orthographic";
+createNode transform -n "PALBOT_GRP";
+	rename -uid "84C6BD3B-4FED-7F9B-E2A5-418B7498E943";
+	setAttr ".ovdt" 1;
+	setAttr ".ove" yes;
+createNode transform -n "PALbot_MESH" -p "PALBOT_GRP";
+	rename -uid "3DA93B46-4D97-0944-8F86-089FFD6822BE";
+	setAttr ".ovdt" 1;
+	setAttr ".ove" yes;
 createNode lightLinker -s -n "lightLinker1";
 	rename -uid "D5019523-4C7A-E666-A258-F98AD70D0700";
 	setAttr -s 2 ".lnk";
@@ -151,11 +159,11 @@ createNode script -n "uiConfigurationScriptNode";
 	setAttr ".st" 3;
 createNode script -n "sceneConfigurationScriptNode";
 	rename -uid "D2A1DE3C-4E1E-E9A3-8A35-43B2A793A8CC";
-	setAttr ".b" -type "string" "playbackOptions -min 30 -max 50 -ast 0 -aet 50 ";
+	setAttr ".b" -type "string" "playbackOptions -min 1 -max 258 -ast 1 -aet 420 ";
 	setAttr ".st" 6;
 select -ne :time1;
-	setAttr ".o" 30;
-	setAttr ".unw" 30;
+	setAttr ".o" 1;
+	setAttr ".unw" 1;
 select -ne :hardwareRenderingGlobals;
 	setAttr ".otfna" -type "stringArray" 22 "NURBS Curves" "NURBS Surfaces" "Polygons" "Subdiv Surface" "Particles" "Particle Instance" "Fluids" "Strokes" "Image Planes" "UI" "Lights" "Cameras" "Locators" "Joints" "IK Handles" "Deformers" "Motion Trails" "Components" "Hair Systems" "Follicles" "Misc. UI" "Ornaments"  ;
 	setAttr ".otfva" -type "Int32Array" 22 0 1 1 1 1 1
